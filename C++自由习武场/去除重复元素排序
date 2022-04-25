@@ -1,0 +1,37 @@
+#include <iterator>
+#include <vector>
+#include <map>
+#include <set>
+#include <queue>
+#include <algorithm>
+#include <stack>
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() 
+{
+	int t;
+	int  a[100];
+	cin >> t;
+	while(t--) {
+		for(int i = 0;i < 12; ++i)
+			cin >> a[i];
+// 在此处补充你的代码
+	vector<int> b;
+	for(int i=0;i<12;i++) b.push_back(a[i]);//注意vector输入是要push_back而不是insert 
+	
+	sort(b.begin(),b.end());//sort函数用法不是在后面加点，那是list才有内置成员函数sort
+	b.erase(unique(b.begin(),b.end()),b.end());//unique 和 erase的组合拳 
+	
+	/*使用set! 可以看到容器的选择是多么重要 
+	set<int> b;
+	for(int i=0;i<12;i++) b.insert(a[i]);//对于重复数据直接插入失败 
+	*/
+	ostream_iterator<int> c(cout," ");//注意copy函数的实现！ 
+	
+	std::copy(b.begin(), b.end(), c);
+		cout << endl;
+	}
+	return 0;
+}
