@@ -36,6 +36,14 @@ string dec2bin(int x){
 	}
 	return tmp;
  	//your code ends here
+	/*补充一种做法
+	for(int i=0;i<31;i++)
+	{
+		int temp=x&1;//这里不能直接把x&1代入下面，好奇怪 
+		tmp=char('0'+temp)+tmp;
+		x>>=1;
+	}
+	return tmp;*/
 }
 int main(){
 	int n;
